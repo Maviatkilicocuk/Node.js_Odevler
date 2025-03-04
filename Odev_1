@@ -1,0 +1,8 @@
+const yaricap = Number(process.argv[2]);
+const pi = 3.14;
+
+function daireAlan(yaricap) {
+    return pi * yaricap * yaricap;
+}
+
+console.log(`Yarıçapı ${yaricap} olan dairenin alanı: ${daireAlan(yaricap)}`);
