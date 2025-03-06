@@ -1,0 +1,28 @@
+const posts = [
+    { title: "Post 1", content: "İçerik 1" },
+    { title: "Post 2", content: "İçerik 2" },
+    { title: "Post 3", content: "İçerik 3" },
+  ];
+  
+  const listPosts = () => {
+    console.log("\n--- Post Listesi ---");
+    posts.forEach((post) => console.log(`${post.title}: ${post.content}`));
+  };
+  
+  const addPost = (newPost) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        posts.push(newPost);
+        console.log("\nYeni post eklendi!");
+        resolve();
+      }, 2000);
+    });
+  };
+  
+  async function run() {
+    listPosts();
+    await addPost({ title: "Post 4", content: "İçerik 4" });
+    listPosts();
+  }
+  
+  run();
