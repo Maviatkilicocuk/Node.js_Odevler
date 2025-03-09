@@ -1,0 +1,24 @@
+---circle.js---
+const pi = Math.PI;
+
+function circleArea (r){
+    console.log(`Dairenin Alanı = ${pi*r*r}`);
+}
+
+function circleCircumference (r) {
+    console.log(`Dairenin çevresi = ${2*pi*r}`);
+}
+
+module.exports = {
+    circleArea,
+    circleCircumference
+};
+
+---cikti.js---
+
+const {circleArea, circleCircumference} = require('./circle');
+
+const r = 5;
+
+circleArea(r);
+circleCircumference(r);
