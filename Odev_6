@@ -1,0 +1,38 @@
+const Koa = require('koa');  
+const app = new Koa();  
+
+// Middleware ile gelen isteğe göre yanıt döndürüyoruz
+app.use(async (ctx) => {
+    if (ctx.path === "/") {
+        ctx.body = `
+            <h2>Index Sayfasına Hoş Geldiniz</h2>
+            <h3>3 adet sayfamız vardır. Sırasıyla:</h3>
+            <h4>* <a href="/hakkimda">Hakkımda</a></h4>
+            <h4>* <a href="/iletisim">İletişim</a></h4>
+        `;
+    } else if (ctx.path === "/hakkimda") {
+        ctx.body = `
+            <h2>Hakkımda Sayfasına Hoş Geldiniz</h2>
+            <h3>Adım Enver</h3>
+            <h3>Soyadım Birinci</h3>
+            <h3>Ankara'da yaşıyorum</h3>
+            <h4><a href="/">Ana Sayfa</a></h4>
+        `;
+    } else if (ctx.path === "/iletisim") {
+        ctx.body = `
+            <h2>İletişim Sayfasına Hoş Geldiniz</h2>
+            <h3>Telefon Numaram: 0531 531 31 69</h3>
+            <h3>Ankara / Etimesgut</h3>
+            <h3>Mail: enverbilal@gmail.com</h3>
+            <h4><a href="/">Ana Sayfa</a></h4>
+        `;
+    } else {
+        ctx.status = 404;
+        ctx.body = "<h1>404 SAYFA BULUNAMADI</h1>";
+    }
+});
+
+const port = 3000;
+app.listen(port, () => {
+    console.log(`🚀 Sunucu ${port} portunda çalışıyor: http://localhost:${port}`);
+});
